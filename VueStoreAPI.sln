@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30517.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VueStoreAPI", "VueStoreAPI\VueStoreAPI.csproj", "{271F2E8F-2104-4933-BE27-E47D91BFC7DC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VueStore.Repository", "VueStore.Repository\VueStore.Repository.csproj", "{95DAC2D0-CAFD-4F85-98E5-763D778306DE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{271F2E8F-2104-4933-BE27-E47D91BFC7DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{271F2E8F-2104-4933-BE27-E47D91BFC7DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{271F2E8F-2104-4933-BE27-E47D91BFC7DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95DAC2D0-CAFD-4F85-98E5-763D778306DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95DAC2D0-CAFD-4F85-98E5-763D778306DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95DAC2D0-CAFD-4F85-98E5-763D778306DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95DAC2D0-CAFD-4F85-98E5-763D778306DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

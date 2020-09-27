@@ -10,6 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using VueStore.Repository;
+using VueStore.Repository.Interfaces;
 
 namespace VueStoreAPI
 {
@@ -26,6 +28,10 @@ namespace VueStoreAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddMvcCore()
+                .AddApiExplorer();
+            services.AddControllersWithViews();
+            services.AddScoped<IItemRepo, ItemRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
