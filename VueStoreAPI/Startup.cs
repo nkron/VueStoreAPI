@@ -33,6 +33,7 @@ namespace VueStoreAPI
             services.AddControllersWithViews();
             services.AddScoped<IItemRepo, ItemRepo>();
             services.AddSwaggerGen();
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,6 +50,12 @@ namespace VueStoreAPI
                 c.RoutePrefix = string.Empty;
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "VueStoreAPI V1");
             });
+
+            app.UseCors(x => x
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .SetIsOriginAllowed(origin => true));
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
