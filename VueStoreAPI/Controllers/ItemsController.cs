@@ -40,9 +40,9 @@ namespace VueStoreAPI.Controllers
 
         //Post api/items
         [HttpPost]
-        public ActionResult<Item> Create(Item item)
+        public ActionResult<int> Create(string itemName, int cost)
         {
-            var result = _itemRepo.CreateItem(item).Result;
+            var result = _itemRepo.CreateItem(new Item {ItemName=itemName, Cost=cost }).Result;
 
             return result != 0 ? Ok(result) : throw new Exception("No record created in database");
         }

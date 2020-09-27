@@ -14,7 +14,7 @@ namespace VueStore.Repository.Interfaces
         Task<int> CreateItem(Item item);
         Task<int> UpdateItem(Item item);
         Task<int> DeleteItem(int id);        
-        Task<IEnumerable<Item>> GetMaxPriceItems();
-        Task<Item> GetMaxPriceItem(string name);
+        Task<IEnumerable<GroupedItem>> GetMaxPriceItems();
+        Task<GroupedItem> GetMaxPriceItem(string name);
     }
 }

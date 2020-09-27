@@ -19,12 +19,12 @@ namespace VueStoreAPI.Controllers
             _itemRepo = itemRepo;
         }
         [HttpGet]
-        public ActionResult<List<Item>> GetMaxPriceItems()
+        public ActionResult<List<GroupedItem>> GetMaxPriceItems()
         {
             return Ok(_itemRepo.GetMaxPriceItems().Result);
         }
         [HttpGet("{name}")]
-        public ActionResult<List<Item>> GetMaxPriceItem(string name)
+        public ActionResult<List<GroupedItem>> GetMaxPriceItem(string name)
         {
             return Ok(_itemRepo.GetMaxPriceItem(name).Result);
         }
