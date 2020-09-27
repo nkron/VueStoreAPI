@@ -75,7 +75,7 @@ namespace VueStore.Repository
         {
             using (IDbConnection cnn = new System.Data.SqlClient.SqlConnection(LoadConnectionString()))
             {
-                var sql = "Select Id,ItemName,MAX(Cost) FROM Items WHERE ItemName = @ItemName";
+                var sql = "Select ItemName,MAX(Cost) FROM Items WHERE ItemName = @ItemName GROUP BY ItemName";
                 var output = cnn.QueryFirstAsync<Item>(sql, new { ItemName = itemName });
                 return await output;
             }
