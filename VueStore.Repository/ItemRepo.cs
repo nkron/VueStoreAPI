@@ -67,7 +67,7 @@ namespace VueStore.Repository
         {
             using (IDbConnection cnn = new System.Data.SqlClient.SqlConnection(LoadConnectionString()))
             {
-                var output = cnn.QueryAsync<GroupedItem>("SELECT ItemName, MAX(Cost) FROM Items GROUP BY ItemName");
+                var output = cnn.QueryAsync<GroupedItem>("SELECT ItemName, MAX(Cost) as Cost FROM Items GROUP BY ItemName");
                 return await output;
             }
         }
@@ -75,7 +75,7 @@ namespace VueStore.Repository
         {
             using (IDbConnection cnn = new System.Data.SqlClient.SqlConnection(LoadConnectionString()))
             {
-                var sql = "Select ItemName,MAX(Cost) FROM Items WHERE ItemName = @ItemName GROUP BY ItemName";
+                var sql = "Select ItemName,MAX(Cost) as Cost FROM Items WHERE ItemName = @ItemName GROUP BY ItemName";
                 var output = cnn.QueryFirstAsync<GroupedItem>(sql, new { ItemName = itemName });
                 return await output;
             }
