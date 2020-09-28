@@ -42,9 +42,10 @@ namespace VueStoreAPI.Controllers
         [HttpPost]
         public ActionResult<int> Create(string itemName, int cost)
         {
-            var result = _itemRepo.CreateItem(new Item {ItemName=itemName, Cost=cost }).Result;
+            var item = new Item { ItemName = itemName, Cost = cost };
+            var result = _itemRepo.CreateItem(item).Result;
 
-            return result != 0 ? Ok(result) : throw new Exception("No record created in database");
+            return Created("URI goes here", item);
         }
 
         //Patch api/items
@@ -53,7 +54,7 @@ namespace VueStoreAPI.Controllers
         {
             var result = _itemRepo.UpdateItem(item).Result;
 
-            return Ok(result);
+            return NoContent();
         }
 
         //Delete api/items
@@ -62,7 +63,7 @@ namespace VueStoreAPI.Controllers
         {
             var rowsDeleted = _itemRepo.DeleteItem(id).Result;
 
-            return Ok(rowsDeleted);
+            return NoContent();
         }
     }
 }

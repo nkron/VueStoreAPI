@@ -49,7 +49,20 @@ namespace VueStoreAPI.Tests
             Assert.IsType<OkObjectResult>(response);
         }
         [Fact]
-        public void Delete_ReturnsOk()
+        public void Create_ReturnsCreated()
+        {
+            //Arrange
+            _itemRepoMock.Setup(x => x.CreateItem(_itemMock))
+                .ReturnsAsync(1);
+
+            //Act
+            var response = _sut.Create("name",1).Result;
+
+            //Assert
+            Assert.IsType<CreatedResult>(response);
+        }
+        [Fact]
+        public void Delete_ReturnsNoContent()
         {
             //Arrange
             _itemRepoMock.Setup(x => x.DeleteItem(0))
@@ -59,7 +72,7 @@ namespace VueStoreAPI.Tests
             var response = _sut.Delete(0).Result;
 
             //Assert
-            Assert.IsType<OkObjectResult>(response);
+            Assert.IsType<NoContentResult>(response);
         }
         [Fact]
         public void Update_ReturnsOk()
@@ -72,7 +85,7 @@ namespace VueStoreAPI.Tests
             var response = _sut.Update(_itemMock).Result;
 
             //Assert
-            Assert.IsType<OkObjectResult>(response);
+            Assert.IsType<NoContentResult>(response);
         }
     }
 }
