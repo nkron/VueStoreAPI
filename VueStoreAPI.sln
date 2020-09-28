@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30517.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VueStoreAPI", "VueStoreAPI\VueStoreAPI.csproj", "{271F2E8F-2104-4933-BE27-E47D91BFC7DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VueStoreAPI", "VueStoreAPI\VueStoreAPI.csproj", "{271F2E8F-2104-4933-BE27-E47D91BFC7DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VueStore.Repository", "VueStore.Repository\VueStore.Repository.csproj", "{95DAC2D0-CAFD-4F85-98E5-763D778306DE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VueStore.Repository", "VueStore.Repository\VueStore.Repository.csproj", "{95DAC2D0-CAFD-4F85-98E5-763D778306DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VueStoreAPI.Tests", "VueStoreAPI.Tests\VueStoreAPI.Tests.csproj", "{ED90ADC0-23F6-4706-83F7-456B90B58DF1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{95DAC2D0-CAFD-4F85-98E5-763D778306DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95DAC2D0-CAFD-4F85-98E5-763D778306DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{95DAC2D0-CAFD-4F85-98E5-763D778306DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED90ADC0-23F6-4706-83F7-456B90B58DF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED90ADC0-23F6-4706-83F7-456B90B58DF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED90ADC0-23F6-4706-83F7-456B90B58DF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED90ADC0-23F6-4706-83F7-456B90B58DF1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
