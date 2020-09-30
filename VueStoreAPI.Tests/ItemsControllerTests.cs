@@ -48,11 +48,14 @@ namespace VueStoreAPI.Tests
                 .Throws(new Exception("mock exception"));
             _loggerMock.Setup(x => x.log("test"))
                 .Verifiable();
+            
+            const int expected = 500;
+            int actual;
             //Act
             var response = (ObjectResult)_sut.GetAll().Result;
-
+            actual = response.StatusCode.Value;
             //Assert
-            Assert.Equal(500, response.StatusCode.Value);
+            Assert.Equal(expected, actual);
         }
         [Fact]
         public void GetByID_ReturnsOk()
@@ -79,6 +82,23 @@ namespace VueStoreAPI.Tests
 
             //Assert
             Assert.IsType<CreatedResult>(response);
+        }
+        [Fact]
+        public void Create_ReturnsCreatedItem()
+        {
+            //Arrange
+            _itemRepoMock.Setup(x => x.CreateItem(_itemMock))
+                .ReturnsAsync(0);
+            
+            Item expected = new Item { Cost = 123, Id = 0, ItemName = "name" };
+            Item actual;
+            //Act
+            var response = (ObjectResult)_sut.Create("name", 123).Result;
+            actual = (Item)response.Value;
+            //Assert
+            Assert.Equal(expected.Id, actual.Id);
+            Assert.Equal(expected.ItemName, actual.ItemName);
+            Assert.Equal(expected.Cost, actual.Cost);
         }
         [Fact]
         public void Delete_ReturnsNoContent()

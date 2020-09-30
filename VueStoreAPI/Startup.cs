@@ -51,7 +51,7 @@ namespace VueStoreAPI
             app.UseSwaggerUI(c =>
             {
                 c.RoutePrefix = string.Empty;
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "VueStoreAPI V1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "VueStoreAPI V2");
             });
 
             app.UseCors(x => x
