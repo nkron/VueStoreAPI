@@ -37,8 +37,8 @@ namespace VueStore.Repository
         {
             using (IDbConnection cnn = new System.Data.SqlClient.SqlConnection(LoadConnectionString()))
             {
-                var sql = "INSERT INTO Items (ItemName, Cost) Values (@ItemName, @Cost);";
-                var output = cnn.ExecuteAsync(sql, new { ItemName = item.ItemName, Cost = item.Cost });
+                var sql = "INSERT INTO Items (ItemName, Cost) Values (@ItemName, @Cost);SELECT CAST(scope_identity() AS int);";
+                var output = cnn.QueryFirstAsync<int>(sql, new { ItemName = item.ItemName, Cost = item.Cost });
                 return await output;
             }
         }

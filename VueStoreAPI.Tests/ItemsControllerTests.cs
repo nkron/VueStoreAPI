@@ -7,6 +7,9 @@ using Moq;
 using VueStore.Repository.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using VueStore.Repository.Models;
+using Castle.Core.Logging;
+using VueStoreAPI.Core;
+using Microsoft.AspNetCore.Http;
 
 namespace VueStoreAPI.Tests
 {
@@ -14,10 +17,11 @@ namespace VueStoreAPI.Tests
     {
         private readonly ItemsController _sut;
         private readonly Mock<IItemRepo> _itemRepoMock = new Mock<IItemRepo>();
+        private readonly Mock<IFakeLogger> _loggerMock = new Mock<IFakeLogger>();
         private readonly Item _itemMock;
         public ItemsControllerTests()
         {
-            _sut = new ItemsController(_itemRepoMock.Object);
+            _sut = new ItemsController(_itemRepoMock.Object, _loggerMock.Object);
             _itemMock = new Item { Id = 0, ItemName = "test0", Cost = 33 };
         }
 
@@ -34,6 +38,21 @@ namespace VueStoreAPI.Tests
 
             //Assert
             Assert.IsType<OkObjectResult>(response);
+        }
+        [Fact]
+        public void GetAll_Returns500WhenError()
+        {
+            //Arrange
+            var items = new List<Item> { _itemMock, new Item { Id = 1, ItemName = "test1", Cost = 44 } };
+            _itemRepoMock.Setup(x => x.GetAll())
+                .Throws(new Exception("mock exception"));
+            _loggerMock.Setup(x => x.log("test"))
+                .Verifiable();
+            //Act
+            var response = (ObjectResult)_sut.GetAll().Result;
+
+            //Assert
+            Assert.Equal(500, response.StatusCode.Value);
         }
         [Fact]
         public void GetByID_ReturnsOk()
